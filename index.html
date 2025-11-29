@@ -7,6 +7,99 @@
     <title>Laravel Master CRUD</title>
   </head>
   <body>
-    <script src="src/main.js"></script>
+    <h1>Laravel Master CRUD</h1>
+    <h2>作成するテーブル</h2>
+    <input type="text" id="table-name" placeholder="テーブル名を入力" />
+    <input
+      type="text"
+      id="table-comment"
+      placeholder="コメントを入力（任意）
+    "
+    />
+    <button id="create-migration">OK</button>
+
+    <!-- マイグレーションファイル生成コマンド -->
+    <div id="make-migration-file-command-section">
+      <span id="make-migration-file-command"></span>
+      <button id="copy-make-migration-file-command">コピー</button>
+    </div>
+
+    <!-- カラム設定 -->
+    <h3 id="columns-section-title">カラム</h3>
+    <div id="columns-table-container">
+      <table id="columns-table">
+        <thead>
+          <tr>
+            <th>カラム名</th>
+            <th>データ型</th>
+            <th>長さ</th>
+            <th>NULL 許可</th>
+            <th>デフォルト値</th>
+            <th>コメント</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="columns-table-body">
+          <tr>
+            <td>
+              <input type="text" class="column-name" placeholder="カラム名" />
+            </td>
+            <td>
+              <select class="column-data-type" title="データ型">
+                <option value="string">string</option>
+                <option value="integer">integer</option>
+                <option value="text">text</option>
+                <option value="boolean">boolean</option>
+                <option value="date">date</option>
+                <option value="datetime">datetime</option>
+                <option value="float">float</option>
+                <option value="decimal">decimal</option>
+              </select>
+            </td>
+            <td>
+              <input
+                type="number"
+                class="column-data-length"
+                placeholder="データの長さ"
+              />
+            </td>
+            <td>
+              <input type="checkbox" class="column-nullable" title="NULL許可" />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="column-default-value"
+                placeholder="デフォルト値"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="column-comment"
+                placeholder="コメント"
+              />
+            </td>
+            <td><button class="remove-column">削除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="add-column">カラム追加</button>
+      <button id="generate-table-definition-template">完了</button>
+    </div>
+
+    <!-- マイグレーションファイル内のカラム定義と削除テンプレート -->
+    <div class="table-definition-template-section">
+      <div class="code-block"><pre id="table-definition-template"></pre></div>
+      <button id="copy-table-definition-template">コピー</button>
+
+      <div class="code-block"><pre id="table-drop-template"></pre></div>
+      <button id="copy-table-drop-template">コピー</button>
+    </div>
+
+    <!-- jQuery の読み込み -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
