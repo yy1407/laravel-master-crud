@@ -1,4 +1,9 @@
 /**
+ * カラム情報の配列
+ */
+export const columns = [];
+
+/**
  * 入力されたテーブル名を取得する
  *
  * @returns {string} 入力されたテーブル名
@@ -7,6 +12,8 @@ export const getInputTableName = () => $('#table-name').val().trim();
 
 /**
  * 入力されたテーブルのコメントを取得する
+ *
+ * @returns {string} 入力されたテーブルのコメント
  */
 export const getInputTableComment = () => $('#table-comment').val().trim();
 
@@ -26,6 +33,8 @@ export const generateMakeMigrationFileCommand = (tableName) =>
  * @return {string} マイグレーションファイル内のテーブル定義テンプレート
  */
 export const generateTableDefinitionTemplate = (tableComment) => {
+  columns.length = 0; // 既存のカラム情報をクリア
+
   /**
    * マイグレーションファイル内のカラム定義テンプレート
    */
@@ -52,6 +61,11 @@ export const generateTableDefinitionTemplate = (tableComment) => {
     const comment = culumnComments[i].value.trim();
 
     if (!name) continue;
+
+    /**
+     * カラム情報を配列に追加
+     */
+    columns.push({ name, type, length, nullable, defaultValue, comment });
 
     let columnDefinition = `$table->${type}('${name}'${
       length ? `, ${length}` : ''
