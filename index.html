@@ -20,13 +20,13 @@
 
     <!-- マイグレーションファイル生成コマンド -->
     <div id="make-migration-file-command-section">
-      <span id="make-migration-file-command"></span>
+      <span class="one-line-code" id="make-migration-file-command"></span>
       <button id="copy-make-migration-file-command">コピー</button>
     </div>
 
     <!-- カラム設定 -->
     <h3 id="columns-section-title">カラム</h3>
-    <div id="columns-table-container">
+    <div id="columns-table-section">
       <table id="columns-table">
         <thead>
           <tr>
@@ -89,12 +89,47 @@
     </div>
 
     <!-- マイグレーションファイル内のカラム定義と削除テンプレート -->
-    <div class="table-definition-template-section">
+    <div id="table-definition-template-section">
       <div class="code-block"><pre id="table-definition-template"></pre></div>
       <button id="copy-table-definition-template">コピー</button>
 
       <div class="code-block"><pre id="table-drop-template"></pre></div>
       <button id="copy-table-drop-template">コピー</button>
+    </div>
+
+    <!-- モデルクラス -->
+    <div id="model-class-section">
+      <h2>モデルクラス</h2>
+      <!-- モデルクラスの cast と fillable 設定テーブル -->
+      <div id="model-class-attributes-table-section">
+        <table id="model-class-attributes-table">
+          <thead>
+            <tr>
+              <th>カラム</th>
+              <th>cast</th>
+              <th>fillable</th>
+            </tr>
+          </thead>
+          <tbody id="model-class-attributes-table-body"></tbody>
+        </table>
+        <button id="generate-model-class-attributes-template">完了</button>
+      </div>
+
+      <!-- モデルクラス内の SoftDeletes と cast と fillable 設定テンプレート -->
+      <div id="model-class-attributes-template-section">
+        <div id="model-soft-deletes-attribute-section">
+          <span class="one-line-code" id="model-soft-deletes-attribute"
+            >use SoftDeletes;</span
+          >
+          <button id="copy-model-soft-deletes-attribute">コピー</button>
+        </div>
+
+        <div class="code-block"><pre id="model-casts-attribute"></pre></div>
+        <button id="copy-model-casts-attribute">コピー</button>
+
+        <div class="code-block"><pre id="model-fillables-attribute"></pre></div>
+        <button id="copy-model-fillables-attribute">コピー</button>
+      </div>
     </div>
 
     <!-- jQuery の読み込み -->

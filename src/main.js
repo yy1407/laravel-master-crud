@@ -5,6 +5,10 @@ import {
   generateMakeMigrationFileCommand,
   generateTableDefinitionTemplate,
 } from './generater/migration/generateTableDefinition.js';
+import {
+  generateModelClassAttributesTable,
+  generateModelClassAttributesTemplate,
+} from './generater/model/generateModel.js';
 import { copyToClipboard } from './generater/clipboard.js';
 
 /**
@@ -72,9 +76,19 @@ $('#generate-table-definition-template').on('click', () => {
   const definitionTemplate = generateTableDefinitionTemplate(tableComment);
   const dropTemplate = `$table->dropIfExists('${tableName}');`;
 
-  $('.table-definition-template-section').css('display', 'inline-block');
+  $('#table-definition-template-section').css('display', 'inline-block');
   $('#table-definition-template').text(definitionTemplate);
   $('#table-drop-template').text(dropTemplate);
+
+  if (columns.length === 0) {
+    return;
+  }
+
+  // モデルクラスの cast と fillable 設定テーブルを生成して表示
+  generateModelClassAttributesTable(columns);
+
+  $('#model-class-section').css('display', 'block');
+  $('#model-class-attributes-table-section').css('display', 'block');
 });
 
 // マイグレーションファイル内のカラム定義テンプレートをクリップボードにコピー
@@ -89,4 +103,39 @@ $('#copy-table-drop-template').on('click', () => {
   const template = $('#table-drop-template').text();
   copyToClipboard(template);
   alert('カラム削除テンプレートをコピーしました。');
+});
+
+// モデルクラスの cast と fillable 設定テンプレートを生成して表示
+$('#generate-model-class-attributes-template').on('click', () => {
+  const { castsTemplate, fillablesTemplate } =
+    generateModelClassAttributesTemplate(columns);
+
+  $('#model-class-attributes-template-section').css('display', 'inline-block');
+
+  $('#model-casts-attribute').text(castsTemplate);
+  $('#model-fillables-attribute').text(fillablesTemplate);
+});
+
+// モデルクラスの SoftDeletes 設定テンプレートをクリップボードにコピー
+$('#copy-model-soft-deletes-attribute').on('click', () => {
+  const template = $('#model-soft-deletes-attribute').text();
+
+  copyToClipboard(template);
+  alert('SoftDeletes 設定テンプレートをコピーしました。');
+});
+
+// モデルクラスの cast 設定テンプレートをクリップボードにコピー
+$('#copy-model-casts-attribute').on('click', () => {
+  const template = $('#model-casts-attribute').text();
+
+  copyToClipboard(template);
+  alert('cast 設定テンプレートをコピーしました。');
+});
+
+// モデルクラスの fillable 設定テンプレートをクリップボードにコピー
+$('#copy-model-fillables-attribute').on('click', () => {
+  const template = $('#model-fillables-attribute').text();
+
+  copyToClipboard(template);
+  alert('fillable 設定テンプレートをコピーしました。');
 });
