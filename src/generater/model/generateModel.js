@@ -48,7 +48,7 @@ export const generateModelClassAttributesTemplate = (columns) => {
 
     // cast テンプレート
     if (castType) {
-      casts.push(`'${columnName}' => '${castType},'`);
+      casts.push(`'${columnName}' => '${castType}',`);
     }
 
     // fillable テンプレート
