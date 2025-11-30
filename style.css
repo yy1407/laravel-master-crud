@@ -3,7 +3,7 @@
   margin-top: 20px;
 }
 
-#make-migration-file-command {
+.one-line-code {
   margin-right: 5px;
 
   /* コード風に */
@@ -22,7 +22,7 @@
   margin-top: 30px;
 }
 
-#columns-table-container {
+#columns-table-section {
   margin-bottom: 20px;
 }
 
@@ -43,7 +43,7 @@
   margin-top: 20px;
 }
 
-.table-definition-template-section {
+#table-definition-template-section {
   display: none;
 }
 
@@ -58,5 +58,39 @@
 }
 
 #copy-table-definition-template {
+  margin-bottom: 10px;
+}
+
+#model-class-section {
+  display: none;
+}
+
+#model-class-attributes-table-section {
+  display: none;
+  margin-bottom: 20px;
+}
+
+#model-class-attributes-table {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: solid 1px #ccc;
+}
+
+#model-class-attributes-table th,
+#model-class-attributes-table td {
+  border: solid 1px #ccc;
+  text-align: left;
+  padding-right: 10px;
+}
+
+#model-class-attributes-template-section {
+  display: none;
+}
+
+#model-soft-deletes-attribute-section {
+  margin-bottom: 10px;
+}
+
+#copy-model-casts-attribute {
   margin-bottom: 10px;
 }
