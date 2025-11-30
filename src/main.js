@@ -1,4 +1,5 @@
 import {
+  columns,
   getInputTableName,
   getInputTableComment,
   generateMakeMigrationFileCommand,
@@ -6,7 +7,13 @@ import {
 } from './generater/migration/generateTableDefinition.js';
 import { copyToClipboard } from './generater/clipboard.js';
 
+/**
+ * テーブル名
+ */
 let tableName = '';
+/**
+ * テーブルコメント
+ */
 let tableComment = '';
 
 $('#create-migration').on('click', () => {
